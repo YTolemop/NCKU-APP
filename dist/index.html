@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#133e8b"><meta name="description" content="成大課表與教室導航。勾選真實課程、查看每週課表，連結成大樓層地圖與 Google Maps 步行導航。">
+  <title>NCKU Campus｜我的課表與校園導航</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23133e8b'/%3E%3Cpath d='M8 24V8h4l8 11V8h4v16h-4L12 13v11z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="vendor/leaflet.css">
+  <script defer src="vendor/leaflet.js"></script><script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+  <aside class="sidebar">
+    <a class="brand" href="#schedule" aria-label="NCKU Campus 首頁"><span class="brand-mark">N</span><span>NCKU<span class="brand-sub">CAMPUS</span></span></a>
+    <div class="sidebar-label">我的校園生活</div>
+    <nav aria-label="主選單"><a href="#schedule" data-nav="schedule"><span data-icon="calendar"></span>我的課表</a><a href="#map" data-nav="map"><span data-icon="map"></span>教室地圖</a><a href="#courses" data-nav="courses"><span data-icon="book"></span>探索課程</a></nav>
+    <div class="sidebar-bottom"><span class="profile-avatar">成</span><div>資工系・智慧系統實作組<small>115 學年度入學</small></div></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><a href="#schedule" class="mobile-brand">NCKU <span>CAMPUS</span></a><span class="desktop-top-label">國立成功大學 <span class="slash">/</span> 校園課務助手</span><div class="top-meta"><span class="semester">115–1 學期</span><button class="icon-button" id="about-btn" aria-label="資料來源與使用說明" data-icon="info"></button></div></header>
+    <main id="main" tabindex="-1"><div class="loading"><span class="loader"></span>正在整理你的校園課表…</div></main>
+    <footer class="page-footer">課程與教室資訊來自成大官方公開資料<span>展示版 · 非校方選課系統</span></footer>
+  </div>
+  <nav class="bottom-nav" aria-label="手機主選單"><a href="#schedule" data-nav="schedule"><span data-icon="calendar"></span>課表</a><a href="#map" data-nav="map"><span data-icon="map"></span>地圖</a><a href="#courses" data-nav="courses"><span data-icon="book"></span>選課</a></nav>
+  <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title"><div id="detail-body"></div></dialog>
+  <dialog id="info-dialog" class="info-dialog" aria-labelledby="info-title"><div class="dialog-top"><span class="eyebrow">ABOUT THIS PROJECT</span><button class="icon-button" data-close="info-dialog" aria-label="關閉使用說明" data-icon="close"></button></div><h2 id="info-title">你的成大上課指南</h2><p>這是課程展示與行程規劃工具。在這裡勾選課程，不會替你在學校完成選課。</p><div class="info-note">初次開啟為示範課表，全部來自 115–1 真實課程。變更只會記在這個瀏覽器，手機與電腦各自獨立；清除瀏覽器資料後會回到示範課表。</div><h3>資料來源</h3><ul class="source-list"><li><a href="https://course.ncku.edu.tw/index.php?c=qry_all" target="_blank" rel="noopener">成大課程查詢系統</a><small>115–1 資工、通識、國文、外語、體育、踏溯台南；資料擷取日期 2026/10/02</small></li><li><a href="https://nckumap.ncku.edu.tw/map.php" target="_blank" rel="noopener">成大地理資訊系統</a><small>官方教室、樓層與館舍座標。未提供的位置會明確標示。</small></li><li><a href="https://cid-acad.ncku.edu.tw/var/file/42/1042/img/761/1132-TIME.pdf" target="_blank" rel="noopener">官方上課節次表</a><small>113–2 起適用，含課間休息時間。</small></li></ul><p class="muted small">導航目的地為館舍中心點；到館後請配合官方樓層圖與現場指示找教室。實際開課與教室異動以學校公告為準。</p><button class="button secondary wide" id="reset-demo">還原示範課表</button></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <noscript><p>請啟用 JavaScript，才能使用課表與互動地圖。</p></noscript>
+</body></html>

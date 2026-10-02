@@ -1,0 +1,6 @@
+web/
+.sites-runtime/
+.cache/
+node_modules/
+test-results/
+*.zip
